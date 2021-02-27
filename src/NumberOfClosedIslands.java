@@ -6,7 +6,7 @@ public class NumberOfClosedIslands {
             for ( int j = 1 ; j < col - 1 ; j++ ){
                 if ( grid[i][j] == 0 ){
                     if ( isClosedIsland(grid,i,j,row,col) ){
-                        closedIsland++l
+                        closedIsland++;
                     }
                 }
             }
@@ -17,9 +17,9 @@ public class NumberOfClosedIslands {
 
     public static boolean isClosedIsland(int[][] grid, int i, int j, int row, int col ){
         // -1 = visited, 1 = water , 0 = land
-        if ( grid[i][j] == 1 || grid[i][j] == -1 ) return true;
+        if ( grid[i][j] == -1 || grid[i][j] == 1 ) return true;
         if ( isOnPerimeter(i,j,row,col)) return false;
-
+        grid[i][j] = -1;
         boolean left = isClosedIsland(grid,i,j-1,row,col);
         boolean right = isClosedIsland(grid,i,j+1,row,col);
         boolean up = isClosedIsland(grid,i - 1,j,row,col);
@@ -33,6 +33,14 @@ public class NumberOfClosedIslands {
     }
 
     public static void main(String[] args){
-        
+        int[][] grid = {
+                {1,1,1,1,1,1,1,0},
+                {1,0,0,0,0,1,1,0},
+                {1,0,1,0,1,1,1,0},
+                {1,0,0,0,0,1,0,1},
+                {1,1,1,1,1,1,1,0}
+        };
+
+        System.out.println(closedIslands(grid));
     }
 }

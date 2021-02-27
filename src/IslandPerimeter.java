@@ -58,7 +58,8 @@ public class IslandPerimeter {
                 {1,1,0,0}};
         int res = islandPerimeter(grid);
         System.out.println(res);
-
+        System.out.println("Added");
+        System.out.println("Added!");
 
     }
 }
